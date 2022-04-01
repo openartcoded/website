@@ -1,0 +1,42 @@
+<ng-container *ngIf="contactForm">
+  <mat-card class="example-card">
+    <mat-card-content>
+      <mat-card-subtitle *ngIf="didNotConsent">
+        <button mat-icon-button color="warn">
+          <mat-icon>warning</mat-icon>
+        </button>&nbsp;You must accept the GDPR consent in order to submit the form.
+      </mat-card-subtitle>
+      <form [formGroup]="contactForm" (ngSubmit)="submit()" class="contact-form">
+        <mat-form-field class="contact-full-width">
+          <mat-label>Full Name</mat-label>
+          <input matInput placeholder="Full Name" formControlName="fullName">
+        </mat-form-field>
+        <mat-form-field class="contact-full-width">
+          <mat-label>Email address</mat-label>
+          <input matInput placeholder="Email address" formControlName="emailAddress">
+        </mat-form-field>
+        <mat-form-field class="contact-full-width">
+          <mat-label>Phone number</mat-label>
+          <input matInput placeholder="Phone number" formControlName="phoneNumber">
+        </mat-form-field>
+        <mat-form-field class="contact-full-width">
+          <mat-label>Preferred time to call</mat-label>
+          <input matInput type="time" placeholder="Preferred time to call" formControlName="bestTimeToCall">
+        </mat-form-field>
+        <mat-form-field class="contact-full-width">
+          <mat-label>Subject</mat-label>
+          <input matInput placeholder="Subject" formControlName="subject">
+        </mat-form-field>
+        <mat-form-field class="contact-full-width">
+          <mat-label>Description of your project</mat-label>
+          <textarea matInput placeholder="Let us know how we can help" formControlName="bodyMessage"></textarea>
+        </mat-form-field>
+
+        <button mat-button type="submit"
+                [disabled]="!contactForm.valid || didNotConsent">Submit
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+

@@ -1,0 +1,9 @@
+<ng-container *ngIf="displayBanner">
+  <div class="row p-1 bg-accent">
+    <div class="container">
+      <span>We use cookies to provide and improve our services. By using this site, you consent to cookies.</span>
+      <button mat-flat-button color="primary" cdkFocusInitial (click)="accepted()" class="mr-1 ml-1">Accept</button>
+      <button mat-flat-button routerLink="/policy">Learn more</button>
+    </div>
+  </div>
+</ng-container>

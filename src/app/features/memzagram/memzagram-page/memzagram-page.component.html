@@ -1,0 +1,29 @@
+<div class="container mt-3">
+  <div class="gallery">
+
+  <ng-container *ngIf="items && items.size > 0">
+    <div class="gallery-item ml-lg-2 ml-0 mb-2 " *ngFor="let n of items.content" role="button" (click)="openDetail(n)">
+      <div class="actions"></div>
+      <ng-container *ngIf="n.thumbnailLink">
+        <app-image-loader [imageUrl]="n.thumbnailLink" cssClass="gallery-image"
+                          [alt]="n?.title"></app-image-loader>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!items || items.empty">
+    No content.
+  </ng-container>
+
+</div>
+</div>
+<div class="container">
+  <mat-paginator [length]="items.totalElements"
+                 *ngIf="items  && items.totalPages > 1"
+                 [pageSize]="items.size"
+                 [hidePageSize]="true"
+                 [pageIndex]="pageNumber"
+                 class="mt-1 transparent d-flex justify-content-center"
+                 (page)="load($event.pageIndex)">
+  </mat-paginator>
+</div>
+

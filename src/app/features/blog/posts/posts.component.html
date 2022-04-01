@@ -1,0 +1,29 @@
+<mat-form-field class="full-width">
+  <input matInput type="search" [(ngModel)]="searchInput" (ngModelChange)="search(null)" placeholder="Search"
+    aria-label="Search">
+</mat-form-field>
+<ng-container *ngIf="tags">
+  <mat-chip-list aria-label="Tags">
+    <mat-chip *ngFor="let t of tags" [selected]="selectedTag===t" (click)="search(t)">#{{t}}</mat-chip>
+  </mat-chip-list>
+</ng-container>
+  <mat-divider class="mt-3 mb-3"></mat-divider>
+  <ng-container *ngIf="posts && posts.size > 0">
+    <mat-card *ngFor="let n of posts.content" class="mt-2">
+      <p>{{n.title | titlecase}}</p>
+      <mat-card-subtitle>{{n.updatedDate | date: 'dd/MM/yyyy'}}</mat-card-subtitle>
+      <mat-card-content>
+        <p>{{n.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button color="accent" mat-raised-button [routerLink]="['post',slugify(n.title),n.id]">Read</button>
+      </mat-card-actions>
+    </mat-card>
+    <mat-paginator [length]="posts.totalElements" *ngIf="posts  && posts.totalPages > 1" [pageSize]="posts.size"
+      [hidePageSize]="true" [pageIndex]="pageNumber" class="mb-2 mt-2" (page)="load($event.pageIndex)">
+    </mat-paginator>
+  </ng-container>
+  <ng-container *ngIf="!posts || posts.empty">
+    No content.
+  </ng-container> 
+

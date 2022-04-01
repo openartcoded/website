@@ -1,0 +1,14 @@
+<ng-container *ngIf="filteredSkills">
+  <mat-form-field class="full-width">
+    <input matInput class="full-width" placeholder="Search..." (input)="filter()" [(ngModel)]="filterSkill">
+  </mat-form-field>
+  <div *ngFor="let skill of filteredSkills">
+    <h3 class="text-break text-accent mt-2 mb-2">{{skill.name}}</h3>
+    <mat-chip-list multiple>
+      <mat-chip *ngFor="let tag of skill.tags"
+                [selected]="selectColor(tag)">
+        {{tag}}</mat-chip>&nbsp;
+    </mat-chip-list>
+
+  </div>
+</ng-container>

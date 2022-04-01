@@ -1,0 +1,160 @@
+@import '~@angular/material/theming';
+@import '~@triply/yasgui/build/yasgui.min.css';
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+
+$custom-typography: mat-typography-config(
+  $font-family: 'Kumbh Sans',
+  $headline: mat-typography-level(32px, 48px, 700),
+  $body-1: mat-typography-level(16px, 24px, 500),
+);
+
+@include mat-base-typography($custom-typography);
+
+@include mat-checkbox-typography($custom-typography);
+
+@include angular-material-typography($custom-typography);
+@include mat-core($custom-typography);
+
+$artcoded-primary: mat-palette($mat-teal);
+$artcoded-accent: mat-palette($mat-orange);
+
+$artcoded-warn: mat-palette($mat-red);
+
+$artcoded-theme: mat-dark-theme(
+  (
+    color: (
+      primary: $artcoded-primary,
+      accent: $artcoded-accent,
+      warn: $artcoded-warn,
+    ),
+  )
+);
+@include angular-material-theme($artcoded-theme);
+
+html,
+body {
+  height: 100%;
+  background-color: #303030;
+}
+
+@media (min-width: 768px) {
+  .border-dotted {
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-right-style: dashed;
+    border-right-color: #6c757d;
+    border-left-style: dashed;
+    border-left-color: #6c757d;
+  }
+}
+
+.text-accent {
+  color: mat-color($artcoded-accent);
+}
+
+.text-primary {
+  color: mat-color($artcoded-primary);
+}
+
+.text-warn {
+  color: mat-color($artcoded-warn);
+}
+
+.bg-accent {
+  background-color: mat-color($artcoded-accent);
+}
+
+.bg-primary {
+  background-color: mat-color($artcoded-primary);
+}
+
+.bg-warn {
+  background-color: mat-color($artcoded-warn);
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: mat-color($artcoded-accent);
+}
+
+.list-item-active {
+  font-weight: bold !important;
+  color: mat-color($artcoded-primary, darker) !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.text-break {
+  word-break: break-all;
+}
+
+.transparent {
+  background-color: transparent !important;
+}
+
+.mat-transparent-dialog-container > mat-dialog-container {
+  background-color: transparent;
+  padding: 0 !important;
+  box-shadow: none;
+}
+
+/** Gallery **/
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 80%;
+}
+
+.gallery-item {
+  position: relative;
+  width: 250px;
+  height: 250px;
+}
+
+.gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item:hover .actions,
+.gallery-item:focus,
+.actions {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  opacity: 0.4;
+  background-color: #2d3335;
+  cursor: pointer;
+}
+
+.actions {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .img-fluid {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .img-fluid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.mat-dialog-container {
+  border-radius: 0 !important;
+}

@@ -1,0 +1,23 @@
+<ng-container>
+  <mat-form-field class="full-width">
+    <input class="full-width" matInput placeholder="Search..." (input)="filter()" [(ngModel)]="filterExperience">
+  </mat-form-field>
+  <mat-card *ngFor="let exp of filteredExperiences" class="mb-2">
+    <mat-card-content>
+      <div class="d-flex justify-content-between">
+        <h3
+          [class.text-primary]="filterExperience?.length > 2 && exp.company.toUpperCase().includes(filterExperience.toUpperCase())">{{exp.title}}
+          @ {{exp.company}}</h3>
+        <h4>{{exp.from | date: 'dd/MM/yyyy'}}
+          - {{exp.current ? 'Now' : exp.to | date: 'dd/MM/yyyy'}}</h4>
+      </div>
+      <mat-divider inset></mat-divider>
+      <ul>
+        <li *ngFor="let desc of exp.description"
+            [class.text-primary]="filterExperience?.length > 2 && desc.toUpperCase().includes(filterExperience.toUpperCase())">
+          {{desc}}
+        </li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

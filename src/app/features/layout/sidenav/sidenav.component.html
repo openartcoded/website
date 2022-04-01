@@ -1,0 +1,26 @@
+<ng-container *ngIf="navlist">
+  <a
+    [routerLink]="h.url"
+    [routerLinkActiveOptions]="h.routerLinkedActiveOptions"
+    routerLinkActive="list-item-active"
+    *ngFor="let h of homeSection"
+    [attr.aria-label]="h.name"
+    mat-list-item
+  >
+    <mat-icon class="mr-2">{{ h.icon }}</mat-icon>
+    <span>{{ h.name }}</span>
+  </a>
+</ng-container>
+<ng-container *ngIf="!navlist">
+  <a
+    [routerLink]="h.url"
+    [routerLinkActiveOptions]="h.routerLinkedActiveOptions"
+    routerLinkActive="list-item-active"
+    *ngFor="let h of homeSection"
+    mat-button
+    [attr.aria-label]="h.name"
+  >
+    <mat-icon class="mr-2">{{ h.icon }}</mat-icon>
+    <span>{{ h.name }}</span>
+  </a>
+</ng-container>

@@ -1,0 +1,6 @@
+{
+    "BACKEND_URL": "http://localhost:4200",
+    "SERVER_BACKEND_URL": "https://api.somehost.org",
+    "SPARQL_ENDPOINT": "http://localhost:4200/sparql",
+    "ENV_TYPE": "DEV"
+}

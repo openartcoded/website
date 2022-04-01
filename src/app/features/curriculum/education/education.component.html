@@ -1,0 +1,9 @@
+<ng-container>
+  <mat-card *ngFor="let hist of scholarHistories">
+    <mat-card-content>
+      <h3>{{hist.title}} @ {{hist.school}}</h3>
+      <h6>{{hist.from | date: 'dd/MM/yyyy'}}
+        - {{hist.current ? 'Now' : hist.to | date: 'dd/MM/yyyy'}}</h6>
+    </mat-card-content>
+  </mat-card>
+</ng-container>

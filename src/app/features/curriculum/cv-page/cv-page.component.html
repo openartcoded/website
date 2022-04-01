@@ -1,0 +1,64 @@
+<div class="d-block">
+  <div *ngIf="introduction">
+    <div class="d-flex justify-content-between">
+      <div>
+        <a mat-flat-button color="accent" target="_blank" [href]="linkedinUrl" class="mr-1">
+          Linkedin
+        </a>
+        <a mat-flat-button target="_blank" [href]="githubUrl" class=" m-0">
+          Github
+        </a>
+      </div>
+      <a color="primary" mat-flat-button (click)="downloadCvRequest()" aria-label="Download Full CV">
+        Download Full CV
+      </a>
+    </div>
+
+    <p class="m-0 mb-2 mt-2" [innerHTML]="introduction">
+    </p>
+  </div>
+</div>
+<mat-divider class="mb-4 mt-2"></mat-divider>
+<div class="row">
+  <div class="col-lg-9 col-12 mb-4">
+    <div class="d-flex justify-content-between">
+      <h2 class="text-primary mb-0">Experiences</h2>
+      <mat-slide-toggle [(ngModel)]="showExperiences">
+      </mat-slide-toggle>
+    </div>
+    <mat-divider *ngIf="!showExperiences" class="mb-2"></mat-divider>
+    <ng-container *ngIf="experiences && showExperiences">
+      <app-experience [experiences]="experiences"></app-experience>
+    </ng-container>
+    <div class="d-flex justify-content-between">
+      <h2 class="text-primary mb-0">Education</h2>
+      <mat-slide-toggle [(ngModel)]="showScholarHistories">
+      </mat-slide-toggle>
+    </div>
+    <mat-divider *ngIf="!showScholarHistories" class="mb-2"></mat-divider>
+    <div class="d-block" *ngIf="scholarHistories && showScholarHistories">
+      <app-education [scholarHistories]="scholarHistories"></app-education>
+    </div>
+
+  </div>
+  <div class="col-lg-3 d-md-inline-block col-12 mb-4">
+    <div class="d-flex justify-content-between">
+      <h2 class="text-primary mb-0">Skills</h2>
+      <mat-slide-toggle [(ngModel)]="showSkills">
+      </mat-slide-toggle>
+    </div>
+    <mat-divider *ngIf="!showSkills" class="mb-2"></mat-divider>
+    <ng-container *ngIf="skills && showSkills">
+      <app-skill [skills]="skills"></app-skill>
+    </ng-container>
+    <div class="d-flex justify-content-between mt-1">
+      <h2 class="text-primary mb-0">Hobbies</h2>
+      <mat-slide-toggle [(ngModel)]="showHobbies">
+      </mat-slide-toggle>
+    </div>
+    <mat-divider *ngIf="!showHobbies" class="mb-2"></mat-divider>
+    <ng-container *ngIf="hobbies && showHobbies">
+      <app-hobby [hobbies]="hobbies"></app-hobby>
+    </ng-container>
+  </div>
+</div>

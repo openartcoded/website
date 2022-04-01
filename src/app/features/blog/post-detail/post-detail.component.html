@@ -1,0 +1,26 @@
+<ng-container *ngIf="post">
+  <div class="border-0 mb-3 mt-3 ml-0 mr-0">
+    <img [src]="getCoverUrl()" class="cover" alt="...">
+    <article class="d-block mt-3">
+      <h1>{{post.title | titlecase}}</h1>
+      <button mat-icon-button (click)="generatePdf()">
+        <mat-icon inline>picture_as_pdf</mat-icon>
+      </button>
+      <small>Last updated: {{post.updatedDate | date: 'dd/MM/yyyy HH:mm'}},
+        Views: {{post.countViews}}
+      </small>
+      <mat-divider class="mb-2"></mat-divider>
+      <markdown [data]="post.content">
+      </markdown>
+      <ng-container>
+        <div class="d-block">
+          <mat-chip-list multiple>
+            <mat-chip *ngFor="let tag of post.tags"
+                      [selected]="true">#{{tag}}</mat-chip>&nbsp;
+          </mat-chip-list>
+        </div>
+      </ng-container>
+    </article>
+  </div>
+</ng-container>
+
