@@ -1,0 +1,4 @@
+node_modules
+dist
+push-docker-image.sh
+.angular
