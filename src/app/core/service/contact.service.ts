@@ -23,9 +23,6 @@ export class ContactService {
     }
   }
 
-  public findAll(): Observable<FormContact[]> {
-    return this.http.post<FormContact[]>(`${this.basePath}/api/form-contact/find-all`, {});
-  }
 
   submit(formContact: FormContact): Observable<any> {
     return this.http.post<any>(`${this.basePath}/api/form-contact/submit`, formContact);
